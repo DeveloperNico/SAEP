@@ -16,4 +16,7 @@ urlpatterns = [
     # Endpoints para Movimentação
     path('movimentacoes/', MovimentacaoListCreateView.as_view(), name='movimentacao-list-create'),
     path('movimentacoes/<int:pk>/', MovimentacaoRetrieveUpdateDestroyAPIView.as_view(), name='movimentacao-retrieve-update-destroy'),
+
+    # Endpoint para categorias
+    path('produtos/categorias/', listar_categorias, name='listar-categorias'),
 ]

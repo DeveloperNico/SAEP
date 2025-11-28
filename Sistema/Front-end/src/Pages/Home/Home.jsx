@@ -40,7 +40,7 @@ export function Home() {
         <p className={styles.subtitle}>Escolha uma das opções abaixo:</p>
 
         <div className={styles.buttons}>
-          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Produto" onClick={() => navigate("/cadastro-produto")} >
+          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Produto" onClick={() => navigate("/produtos")} >
             <Smartphone className={styles.iconButton}/>
           </button>
 

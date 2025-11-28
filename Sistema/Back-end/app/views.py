@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .models import Usuario, Produto, Movimentacao
 from .serializers import UsuarioSerializer, ProdutoSerializer, MovimentacaoSerializer, LoginSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -37,3 +39,11 @@ class MovimentacaoRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
 class LoginView(TokenObtainPairView):
     serializer_class = LoginSerializer
+
+@api_view(['GET'])
+def listar_categorias(request):
+    categorias = [
+        {"value": value, "label": label}
+        for value, label in Produto.CATEGORIAS
+    ]
+    return Response(categorias)

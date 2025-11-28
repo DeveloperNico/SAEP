@@ -1,0 +1,146 @@
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    padding: 15px;
+}
+
+.modalContent {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    width: 550px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.25);
+    animation: modalFadeIn 0.25s ease;
+}
+
+/* ===== Select ===== */
+.selectWrapper {
+    grid-column: span 2; /* ocupa linha inteira como os outros */
+    width: 100%;
+}
+
+.select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #cfcfcf;
+    font-size: 15px;
+    background: #fafafa;
+    transition: 0.2s;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+/* Focus igual aos inputs */
+.select:focus {
+    border-color: #9b3457;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(155, 52, 87, 0.25);
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(-14px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== Título ===== */
+.modalContent h2 {
+    text-align: center;
+    margin-bottom: 5px;
+    color: #8d2e47;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ===== Container dos inputs ===== */
+.formGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Inputs maiores ocupam linha inteira */
+.formGroup input[name="nome"],
+.formGroup input[name="categoria"],
+.formGroup input[name="conectividade"],
+.formGroup input[name="fabricante"] {
+    grid-column: span 2;
+}
+
+/* ===== Input ===== */
+.input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #cfcfcf;
+    font-size: 15px;
+    background: #fafafa;
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: #9b3457;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(155, 52, 87, 0.25);
+}
+
+/* ===== Botões ===== */
+.modalButtons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.btnPrimary,
+.btnSecondary {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btnPrimary {
+    background-color: #9b3457;
+}
+
+.btnPrimary:hover {
+    background-color: #8d2e47;
+    transform: scale(1.03);
+}
+
+.btnSecondary {
+    background-color: #777;
+}
+
+.btnSecondary:hover {
+    background-color: #5e5e5e;
+    transform: scale(1.03);
+}
