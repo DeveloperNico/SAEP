@@ -1,0 +1,157 @@
+/* Container geral */
+.containerForm {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #c25789, #e06030);
+}
+
+/* Imagem de fundo do lado direito */
+.backgroundImage {
+    position: absolute;
+    left: -2%;
+    bottom: 5%;
+    height: 70%;
+    width: auto;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+.bigForm {
+    display: flex;
+    gap: 50px;
+    background-color: rgba(250, 250, 250, 0.15);
+    border-radius: 20px;
+    padding: 20px;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    min-width: 880px;
+    height: auto;
+}
+
+.bigForm img {
+    width: 400px;
+    height: auto;
+}
+
+/* Card Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    width: 480px;
+    height: 500px;
+    padding: 80px 40px;
+    border-radius: 20px;
+    background: rgba(250, 250, 250, 0.15);
+    color: #fff;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+/* Botão */
+.form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.form button:hover {
+    background-color: #ad1e61;
+}
+
+
+/* ----- RESPONSIVIDADE ----- */
+/* Telas menores que 1100px (tablets / notebooks pequenos) */
+@media (max-width: 1100px) {
+    .bigForm {
+        min-width: 700px;
+        gap: 30px;
+    }
+
+    .form {
+        width: 380px;
+        height: auto;
+        padding: 60px 30px;
+    }
+
+    .bigForm img {
+        width: 300px;
+    }
+}
+
+/* Telas menores que 900px (tablets em pé) */
+@media (max-width: 900px) {
+    .bigForm {
+        flex-direction: column;
+        min-width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .bigForm img {
+        display: none;
+    }
+
+    .form {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+
+/* Telas menores que 600px (celulares) */
+@media (max-width: 600px) {
+
+    .containerForm {
+        padding: 20px;
+    }
+
+    .bigForm {
+        min-width: 100%;
+        border-radius: 15px;
+        padding: 20px;
+    }
+
+    .form {
+        padding: 40px 20px;
+    }
+
+    .form input,
+    .form button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .bigForm img {
+        opacity: 0;
+    }
+}
