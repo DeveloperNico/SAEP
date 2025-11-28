@@ -19,9 +19,10 @@
     margin-bottom: 30px;
 }
 
+/* Estilos dos botões na página inicial */
 .buttons {
     display: flex;
-    gap: 15px;
+    gap: 50px;
 }
 
 .buttonPrimary{
@@ -38,67 +39,79 @@
     }
 }
 
-.btnProduto {
+/* Tooltip padrão (invisível) */
+.tooltipButton {
     position: relative;
 }
 
-.btnProduto:hover::after {
-    content: "Gerenciamento de Produto";
+.tooltipButton::after {
+    content: attr(data-tooltip); /* pega o texto do atributo */
     position: absolute;
-    bottom: -25px; /* aparece embaixo do botão */
+    bottom: -30px;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 6px;
+    transform: translateX(-50%) translateY(5px);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 10px;
+    margin-top: 10px;
+    color: #fff;
     font-size: 12px;
+    border-radius: 6px;
     white-space: nowrap;
-    opacity: 1;
+    opacity: 0;
     pointer-events: none;
+    backdrop-filter: blur(2px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.btnEstoque {
-  position: relative;
+/* Quando passa o mouse */
+.tooltipButton:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
+/* ------------------------------------------------------------ */
 
-.btnEstoque:hover::after {
-  content: "Gerenciamento de Estoque";
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 1;
-  pointer-events: none;
-}
-
+/* Estilos do botão de logout no canto superior direito */
 .buttonLogoutTop {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     top: 20px;
     right: 20px;
-    background-color: #b03959;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #9b3457;
     border: none;
-    border-radius: 10px;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
     cursor: pointer;
-    padding: 10px;
-    transition: 0.2s ease-in-out;
+    width: 45px;
+    overflow: hidden;
+    transition: width 0.3s ease, background 0.3s ease, transform 0.2s ease;
+}
 
-    & .iconLogout {
-        transform: scaleX(-1);
-    }
+.iconLogout {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    transform: rotate(180deg);
 }
 
 .buttonLogoutTop:hover {
+    width: 120px;
     background-color: #8d2e47;
     transform: scale(1.05);
 }
+
+/* Texto inicialmente invisível */
+.logoutText {
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateX(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.buttonLogoutTop:hover .logoutText {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* ------------------------------------------------------------ */

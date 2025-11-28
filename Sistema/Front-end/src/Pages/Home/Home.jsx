@@ -33,19 +33,21 @@ export function Home() {
     <div className={styles.container}>
         <button className={styles.buttonLogoutTop} onClick={handleLogout}>
           <LogOut className={styles.iconLogout} />
+          <span className={styles.logoutText}>Sair</span>
         </button>
 
         <h2 className={styles.title}>Olá, seja bem-vindo {userName}! 👋</h2>
         <p className={styles.subtitle}>Escolha uma das opções abaixo:</p>
 
         <div className={styles.buttons}>
-          <button className={`${styles.buttonPrimary} ${styles.btnProduto}`} onClick={() => navigate("/cadastro-produto")}>
+          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Produto" onClick={() => navigate("/cadastro-produto")} >
             <Smartphone className={styles.iconButton}/>
           </button>
 
-          <button className={`${styles.buttonPrimary} ${styles.btnEstoque}`} onClick={() => navigate("/gestao-estoque")}>
+          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Estoque" onClick={() => navigate("/gestao-estoque")} >
             <Package className={styles.iconButton}/>
           </button>
+
         </div>
     </div>
   );
