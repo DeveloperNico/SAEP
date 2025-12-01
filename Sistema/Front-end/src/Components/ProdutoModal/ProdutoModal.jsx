@@ -58,8 +58,7 @@ export function ProdutoModal({ close, product, refresh }) {
         try {
             if (product) {
                 await axios.put(
-                    `http://localhost:8000/api/produtos/${product.produtoId}`, 
-                    form
+                    `http://localhost:8000/api/produtos/${product.produtoId}/`, form
                 );
             } else {
                 await axios.post("http://localhost:8000/api/produtos/", form);

@@ -3,6 +3,11 @@ import styles from "./Produto.module.css";
 import axios from "axios";
 import { ProdutoModal } from "../../Components/ProdutoModal/ProdutoModal";
 
+import { ArrowLeft } from 'lucide-react';
+import { Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
+import Swal from "sweetalert2";
+
 export function Produto() {
     const [products, setProducts] = useState([]);
     const [filtered, setFiltered] = useState([]);
@@ -23,7 +28,7 @@ export function Produto() {
     }, [search, products]);
 
     async function fetchProducts() {
-        const res = await axios.get("http://localhost:8000/api/produtos");
+        const res = await axios.get("http://localhost:8000/api/produtos/");
         const data = res.data;
         setProducts(data);
         setFiltered(data);
@@ -40,9 +45,29 @@ export function Produto() {
     }
 
     async function deleteProduct(id) {
-        if (!confirm("Deseja realmente excluir?")) return;
+        const result = await Swal.fire({
+            title: "Tem certeza?",
+            text: "Este produto será excluído permanentemente!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, excluir",
+            cancelButtonText: "Cancelar"
+        });
 
-        await axios.delete(`http://localhost:8000/api/produtos/${id}`);
+        // Se usuário cancelar, não faz nada
+        if (!result.isConfirmed) return;
+
+        // Se confirmou, exclui
+        await axios.delete(`http://localhost:8000/api/produtos/${id}/`);
+
+        Swal.fire({
+            title: "Excluído!",
+            text: "O produto foi removido do sistema.",
+            icon: "success",
+            confirmButtonColor: "#3085d6"
+        });
 
         fetchProducts();
     }
@@ -51,21 +76,23 @@ export function Produto() {
         <div className={styles.container}>
             <h1>Cadastro de Produtos</h1>
 
-            <button className={styles.btnBack} onClick={() => window.location.href = "/home"}>
-                Voltar
-            </button>
+            <div className={styles.filterContainer}>
+                <button className={styles.btnBack} onClick={() => window.location.href = "/home"}>
+                    <ArrowLeft />
+                </button>
 
-            <input
-                type="text"
-                placeholder="Buscar produto..."
-                className={styles.searchBar}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
+                <input
+                    type="text"
+                    placeholder="Buscar produto..."
+                    className={styles.searchBar}
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
 
-            <button className={styles.btnPrimary} onClick={openCreate}>
-                Novo Produto
-            </button>
+                <button className={styles.btnPrimary} onClick={openCreate}>
+                    Novo Produto
+                </button>
+            </div>
 
             <table className={styles.table}>
                 <thead>
@@ -82,30 +109,30 @@ export function Produto() {
                     {filtered.length === 0 ? (
                         <tr>
                             <td className={styles.empty} colSpan="5">
-                                Nenhum produto encontrado
+                                Nenhum produto cadastrado
                             </td>
                         </tr>
                     ) : (
                         filtered.map((p) => (
-                            <tr key={p.produtoId}>   {/* 🔧 CORRIGIDO */}
+                            <tr key={p.produtoId}>
                                 <td>{p.produtoId}</td>
                                 <td>{p.nome}</td>
                                 <td>{p.categoria}</td>
                                 <td>{p.fabricante}</td>
 
-                                <td>
+                                <td className={styles.actions}>
                                     <button
                                         className={styles.btnEdit}
                                         onClick={() => openEdit(p)}
                                     >
-                                        Editar
+                                        <Pencil />
                                     </button>
 
                                     <button
                                         className={styles.btnDelete}
                                         onClick={() => deleteProduct(p.produtoId)}
                                     >
-                                        Excluir
+                                        <Trash2 />
                                     </button>
                                 </td>
                             </tr>
