@@ -44,7 +44,7 @@ export function Home() {
             <Smartphone className={styles.iconButton}/>
           </button>
 
-          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Estoque" onClick={() => navigate("/gestao-estoque")} >
+          <button className={`${styles.buttonPrimary} ${styles.tooltipButton}`} data-tooltip="Gerenciamento de Estoque" onClick={() => navigate("/estoque")} >
             <Package className={styles.iconButton}/>
           </button>
 

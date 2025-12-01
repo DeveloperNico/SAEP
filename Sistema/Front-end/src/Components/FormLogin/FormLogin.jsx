@@ -22,6 +22,7 @@ export function FormLogin() {
           // Armazenar o token no localStorage
           localStorage.setItem('token', response.data.access);
           localStorage.setItem('userName', username);
+          localStorage.setItem('user', JSON.stringify(response.data.user));
           
           // Redirecionar para a página protegida
           window.location.href = '/home';

@@ -1,34 +1,28 @@
-/* Container principal */
+@import url('../../Styles/variables.css');
+
+/* ====== CONTAINER PRINCIPAL ====== */
 .container {
     padding: 40px;
 }
 
-.filterContainer {
+/* Barra superior (voltar + título + botão de movimento) */
+.headerBar {
     display: flex;
-    gap: 50px;
-    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
 }
 
-/* Botões padrão */
-.btnPrimary {
-    padding: 10px 18px;
-    background-color: #9b3457;
-    border: none;
+/* Campo de busca */
+.searchBar {
+    padding: 10px;
+    width: 260px;
+    margin-bottom: 25px;
     border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 20px;
+    border: 1px solid #ccc;
 }
 
-.btnSecondary {
-    padding: 10px 18px;
-    background-color: #777;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-}
-
+/* ====== BOTÕES ====== */
 .btnBack {
     display: flex;
     align-items: center;
@@ -39,22 +33,14 @@
     padding: 8px 14px;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-/* Barra de busca */
-.searchBar {
-    padding: 10px;
-    width: 260px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-}
-
-/* Tabela */
+/* ====== TABELA ====== */
 .table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 .table th {
@@ -68,56 +54,35 @@
     border-bottom: 1px solid #ddd;
 }
 
+/* Quando não houver produtos */
 .empty {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
+    color: #777;
 }
 
-/* Botões da tabela */
+/* Coluna de ações da tabela */
 .actions {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.btnEdit {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #0d6efd;
+.btnMovimentar {
+    padding: 8px 12px;
+    background-color: #9b3457;
     border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    color: #062758;
+    border-radius: 8px;
+    color: #fff;
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
 
-.btnEdit:hover {
-    background-color: #073da8;
-    color: #fff;
+.btnMovimentar:hover {
+    background-color: #7a2743;
 }
 
-.btnDelete {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #b02a37;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    color: #330c10;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-.btnDelete:hover {
-    background-color: #7a1a1f;
-    color: #fff;
-}
-
-/* Modal */
+/* ====== MODAL ====== */
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -128,6 +93,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
 }
 
 .modalContent {
@@ -141,6 +107,12 @@
 }
 
 .input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.select {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
